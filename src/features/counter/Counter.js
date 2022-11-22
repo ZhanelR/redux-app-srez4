@@ -10,6 +10,8 @@ import {
 } from './counterSlice';
 import styles from './Counter.module.css';
 
+//increment заменяет action
+
 export function Counter() {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
