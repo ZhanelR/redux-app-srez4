@@ -1,0 +1,41 @@
+@mixin card__title { 
+    font-size: 24px; 
+    font-weight: 400; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+} 
+
+@mixin card__buttons-view {
+        border: 0.5px solid; 
+        margin: 5px 0px; 
+        padding: 4px; 
+        display: inline-block; 
+        border-radius: 4px 0px 0px 4px;    
+    } 
+
+@mixin card__buttons-color {
+    border: 0.5px solid; 
+    margin: 5px 0px;  
+    padding: 4px; 
+    display: inline-block; 
+    border-left: none; 
+}
+
+@mixin card__buttons-edit {
+    border: 0.5px solid; 
+    margin: 5px 0px;  
+    padding: 4px; 
+    display: inline-block; 
+    border-left: none; 
+}
+
+@mixin card__buttons-delete {
+    border: 0.5px solid; 
+    margin: 5px 0px;  
+    padding: 4px; 
+    display: inline-block; 
+    border-left: none;
+    border-radius: 0px 4px 4px 0h px; 
+}
+     
