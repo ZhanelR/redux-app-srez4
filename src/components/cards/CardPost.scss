@@ -1,0 +1,41 @@
+@import "../../scss/mixins.scss";
+
+.main-wrapper { 
+    width: 400px; 
+    height: 180px; 
+    padding: 20px; 
+    margin: 30px; 
+    background-color: rgba(84, 86, 86, 0.865); 
+} 
+ 
+.card__title { 
+    @include card__title
+} 
+ 
+.card__description { 
+    margin-bottom: 10px;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+} 
+ 
+.bottom-button-area { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(70px, 150px)); 
+} 
+ 
+.card__buttons-view {
+    @include card__buttons-view
+}
+
+.card__buttons-color {
+    @include card__buttons-color
+}
+
+.card__buttons-edit {
+    @include card__buttons-edit
+}
+
+.card__buttons-delete {
+    @include card__buttons-delete
+}
