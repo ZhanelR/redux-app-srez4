@@ -1,11 +1,11 @@
 @import "../../scss/mixins.scss";
 
 .main-wrapper { 
-    width: 400px; 
-    height: 180px; 
+    width: 380px; 
+    height: 200px; 
     padding: 20px; 
-    margin: 30px; 
-    background-color: rgba(84, 86, 86, 0.865); 
+    margin: 15px; 
+    background-color: rgba(116, 116, 116, 0.865); 
 } 
  
 .card__title { 
@@ -22,12 +22,29 @@
 .bottom-button-area { 
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(70px, 150px)); 
+    margin-left: 10px;
 } 
  
 .card__buttons-view {
-    @include card__buttons-view
+    margin-right: 7px;
+    background-color: none;
 }
 
+.card__buttons-color {
+    margin-right: 7px;
+    background-color: none;
+}
+
+.card__buttons-edit {
+    margin-right: 7px;
+    background-color: none;
+}
+
+.card__buttons-delete {
+    margin-right: 7px;
+    background-color: none;
+}
+/* 
 .card__buttons-color {
     @include card__buttons-color
 }
@@ -38,4 +55,4 @@
 
 .card__buttons-delete {
     @include card__buttons-delete
-}
+} */

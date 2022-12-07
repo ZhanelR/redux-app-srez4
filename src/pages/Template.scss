@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.page_title {
+    margin-top: 20px;
+    margin-left: 32px;
+    margin-bottom: 30px;
+    font-size: 35px;
+}
+
+.button-area { 
+    display: flex; 
+    list-style-type: none; 
+    margin-left: 940px; 
+    margin-top: -70px; 
+    flex-wrap: nowrap;
+} 
+ 
+.button-make-big-cards { 
+    width: 130px; 
+    height: 32px; 
+    background-color: #2475e6; 
+    border-radius: 5%; 
+    color:  white; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-right: 10px;   
+} 
+ 
+.button-add-article { 
+    width: 130px; 
+    height: 32px; 
+    background-color: #2475e6; 
+    border-radius: 5%; 
+    color: white; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+     
+} 
+ 
+.cards-wrapper { 
+    display: inline-block; 
+} 
+ 
+.cards { 
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: nowrap; 
+    justify-content: flex-start; 
+} 
+ 
+ 
+.button_ShowMore { 
+/*     width: 130px; 
+    height: 32px; 
+    background-color: #2475e6; 
+    border-radius: 5%; 
+    color: white;  */
+    margin: auto; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    
+} 

@@ -1,22 +1,19 @@
-//в этом файле разметка каточки 
-
 import { useState } from "react";
 import classNames from "classnames";
 // библ classNames позв использ переменные при переключении классов 
-import {openInfoPopup, openEditPopup, openRemovePopup} from "../../slices/postsSlice"
+import {openInfoPopup, openEditPopup, openRemovePopup} from "../../slices/photosSlice"
 //строка выше {openInfoPopup, openEditPopup, openRemovePopup} это методы, позволяющ влиять на модалки 
 import {useSelector, useDispatch} from "react-redux";
 import "./CardPost.scss"
 import { Button, Space } from 'antd'
-import ModalViewPosts from "../ModavViewPosts"
+import ModalViewPhotos from "../ModalViewPhotos"
 
 
-const CardPost = (props) => {
-  const {id, title, body} = props;
+const CardPhotos = ({id, title, url}) => {
 // строка выше - открываю объект пропсов и достаю из него d, title, body
 //...id, title, body - это пропсы того, что придет с запроса на сервер  
 //...(получаю эти пропсы когда мапю в Articles я через спред {...post}, те то что есть в фото, через спрэд выкидываю в пропсы )
-  const isSmall = useSelector(state => state.posts.isSmallCards)
+  const isSmall = useSelector(state => state.photos.isSmallCards)
   const dispatch = useDispatch()
 
   const [bgColor, setBgColor] = useState(false)
@@ -24,7 +21,6 @@ const CardPost = (props) => {
   const changeColor = () => {
     setBgColor(!bgColor)
   }
-
 
   return (
     <div className={classNames({
@@ -36,7 +32,7 @@ const CardPost = (props) => {
       <div className="main-wrapper">
         <div className="card__text">
           <p className="card__title">{title}</p>
-          <p className="card__description">{body}</p>
+          <p className="card__url">{url}</p>
         </div>
         <div className="card__buttons">
           <Button
@@ -63,9 +59,7 @@ const CardPost = (props) => {
           >
             Delete
           </Button>
-
-          <ModalViewPosts key={id} id={id} title={title} body={body}/>  
-
+          <ModalViewPhotos id={id} title={title} url={url}/>
         </div>
       </div>
     </div>
@@ -73,5 +67,5 @@ const CardPost = (props) => {
   )
 }
 
-export default CardPost
+export default CardPhotos
 

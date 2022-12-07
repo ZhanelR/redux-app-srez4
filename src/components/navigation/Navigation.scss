@@ -2,8 +2,12 @@
     margin-left: 15px; 
     color: white; 
     text-decoration: none; 
-} 
+   } 
 
-.menu__list-item active {
+.active {
     color: orange;
+}
+
+.menu__list {
+    margin: 0;
 }

@@ -6,7 +6,9 @@ import "./Navigation.scss"
 const Navigation = () => {
 
   const location = useLocation();
+  //useLocation это перв строка в истории браузера 
   const {pathname} = location;
+  //достаю пас 
   const splitLocation = pathname.split("/");
 
   return (

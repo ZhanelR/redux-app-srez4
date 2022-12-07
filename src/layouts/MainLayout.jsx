@@ -18,4 +18,6 @@ const MainLayout = () => {
   )
 }
 
+//импортир из анта лэйаут,заменить <div className="content"> на него 
+
 export default MainLayout

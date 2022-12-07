@@ -5,10 +5,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
 import postsReducer from '../slices/postsSlice';
+import usersReducer from '../slices/usersSlice';
+import photosReducer from "../slices/photosSlice"
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     posts: postsReducer,
+    users: usersReducer,
+    photos: photosReducer,
   },
 });
+
