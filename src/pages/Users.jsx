@@ -5,10 +5,11 @@ import { fetchUsers, showFirstPosts, addThreeShowItems, openAddPopup } from "../
 import CardUsers from "../components/cards/CardUsers"
 import { Button } from 'antd'
 import ModalAddUser from "../components/ModalAddUser"
+import ModalViewUsers from "../components/ModalViewUsers"
 
 
 const Users = () => {
-    const users = useSelector(state => state.users.items) 
+    const users = useSelector(state => state.users.showItems) 
     const dispatch = useDispatch()
     
 
@@ -17,7 +18,7 @@ const Users = () => {
           try {
             await dispatch(fetchUsers())
             // строка выше - запрашиваю все посты. Это вызов экшна, который получит все посты. причем ждет, пока выполнится (await) 
-            //await dispatch(showFirstPosts())
+            await dispatch(showFirstPosts())
             //строка выше - обрезка постов (показ не весь массив постов,а первые 3)
             } catch (error) {
             console.error(error);
@@ -30,11 +31,12 @@ const Users = () => {
         <div className="container">
          <p className="page_title">Users List</p>
          <div className="button-area">
-           <li className="button-make-big-cards">Make big cards</li>
-           <li className="button-add-article" onClick={() => {
+           <Button className="button-make-big-cards">Make big cards</Button>
+           <Button className="button-add-article" onClick={() => {
         dispatch (openAddPopup()) 
-      }}>Add user</li>
+      }}>Add user</Button>
            <ModalAddUser />
+           <ModalViewUsers />
          </div>
    
          <div className="cards-wrapper">

@@ -16,7 +16,7 @@ const initialState = {
   end: 3,
   items: [],
   showItems: [],
-  currentPost: {},
+  currentUser: {},
   status: 'loading',
   isSmallCards: true,
   isShowInfoPopup: false,
@@ -36,7 +36,7 @@ export const usersSlice = createSlice({
   
       openInfoPopup: (state, action) => {
         state.isShowInfoPopup = true
-        state.currentPost = state.items.find(item => item.id === action.payload)
+        state.currentUser = state.items.find(item => item.name === action.payload)
       },
   
       closeInfoPopup: (state) => {
@@ -44,7 +44,7 @@ export const usersSlice = createSlice({
       },
   
       openEditPopup: (state, action) => {
-        state.currentPost = state.items.find(item => item.id === action.payload)
+        state.currentUser = state.items.find(item => item.name === action.payload)
         state.isShowEditPopup = true
       },
   
@@ -62,7 +62,7 @@ export const usersSlice = createSlice({
   
       openRemovePopup: (state, action) => {
         state.isShowRemovePopup = true
-        state.currentPost = state.showItems.find(item => item.id === action.payload)
+        state.currentUser = state.showItems.find(item => item.name === action.payload)
       },
   
       closeRemovePopup: (state) => {
@@ -79,13 +79,13 @@ export const usersSlice = createSlice({
       },
   
       updateItem: (state, action) => {
-        state.currentPost = state.showItems.find(item => item.id === action.payload.id)
-        state.currentPost.title = action.payload.title
-        state.currentPost.body = action.payload.body
+        state.currentUser = state.showItems.find(item => item.name === action.payload.id)
+        state.currentUser.title = action.payload.title
+        state.currentUser.body = action.payload.body
       },
   
       removeItem: (state) => {
-        state.showItems = state.showItems.filter(item => item.id !== state.currentPost.id)
+        state.showItems = state.showItems.filter(item => item.name !== state.currentUser.id)
         state.isShowRemovePopup = false
       },
   

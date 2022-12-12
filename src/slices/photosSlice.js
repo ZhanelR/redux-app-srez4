@@ -101,6 +101,7 @@ export const photosSlice = createSlice({
     },
 
     showFirstPosts: (state) => {
+      console.log(state)
       state.showItems = state.items.slice(state.start, state.end)
     }
   },

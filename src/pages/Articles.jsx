@@ -12,7 +12,7 @@ import "./Template.scss"
 import { Button, Space } from 'antd'
 import { openAddPopup } from "../slices/postsSlice";
 import ModalAddPost from "../components/ModalAddPost";
-import ModalView from "../components/ModavViewPosts"
+import ModavViewPost from "../components/ModavViewPosts"
 
 const Articles = () => {
     //const {text} = useSelector(state => state.posts) 
@@ -21,7 +21,7 @@ const Articles = () => {
     const posts = useSelector(state => state.posts.showItems) 
     const dispatch = useDispatch()
     //dispatch для того, чтобы что-то отпр в стор (любое взаимод со стором, кроме получения)
-    const { items, showItems, status, end } = useSelector(state => state.posts)
+    const { status, end, items } = useSelector(state => state.posts)
     //см строку выше  в redux дэв тулс 
 
     //ниже скопированная модалка из ANT 
@@ -54,9 +54,24 @@ const Articles = () => {
         }
         getPosts()
       }, [])
+
+      const buttonShow = () => {
+        if(items.length <= end) return (
+          <Button type="primary" disabled className="button_ShowMore" onClick={() => {
+            dispatch (addThreeShowItems()) 
+          }}
+          >Show More</Button>
+        ) 
+        return (
+          <Button type="primary" className="button_ShowMore" onClick={() => {
+            dispatch (addThreeShowItems()) 
+          }}
+          >Show More</Button>
+        )
+      } 
     
 return (
-     <div className="container">
+     <div className="content-wrapper">
       <p className="page_title">Article List</p>
       <div className="button-area">
         <Button className="button-make-big-cards">Make big cards</Button>
@@ -64,21 +79,19 @@ return (
         dispatch (openAddPopup()) 
       }}>Add article</Button>
         <ModalAddPost />
+        <ModavViewPost />  
       </div>
       
 
-      <div className="cards-wrapper">
+      
         <div className="cards">
           {
             status === "loading" ? <div>Spinner</div> : posts.map(post => <CardPost {...post} key={post.id} />)
           }
         </div>
-      </div>
+     
 
-       <Button type="primary" className="button_ShowMore" onClick={() => {
-        dispatch (addThreeShowItems()) 
-      }}>Show More</Button>
-
+        {buttonShow()}
         
 
     </div> 

@@ -61,7 +61,7 @@ const CardUsers = ({name, email, phone}) => {
           >
             Delete
           </Button>
-          <ModalViewUsers name={name} email={email} phone={phone}/>
+          
         </div>
       </div>
     </div>

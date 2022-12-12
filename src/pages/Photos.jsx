@@ -7,9 +7,9 @@ import "./Template.scss"
 import { Button, Space } from 'antd'
 
 const Photos = () => {
-    const photos = useSelector(state => state.posts.showItems) 
+    const photos = useSelector(state => state.photos.showItems) 
     const dispatch = useDispatch()
-    const { items, showItems, status, end } = useSelector(state => state.photos)
+    //const { items, showItems, status, end } = useSelector(state => state.photos)
 
 
     useEffect(() => {
@@ -30,8 +30,8 @@ const Photos = () => {
         <div className="container">
          <p className="page_title">Photos List</p>
          <div className="button-area">
-           <li className="button-make-big-cards">Make big cards</li>
-           <li className="button-add-article">Add article</li>
+           <Button className="button-make-big-cards">Make big cards</Button>
+           <Button className="button-add-article">Add article</Button>
          </div>
    
          <div className="cards-wrapper">

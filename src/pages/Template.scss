@@ -1,11 +1,13 @@
-.container {
+.content-wrapper {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
 }
 
 .page_title {
     margin-top: 20px;
-    margin-left: 32px;
+    margin-left: 22px;
     margin-bottom: 30px;
     font-size: 35px;
 }
@@ -41,16 +43,13 @@
     justify-content: center; 
      
 } 
- 
-.cards-wrapper { 
-    display: inline-block; 
-} 
+
  
 .cards { 
     display: flex; 
-    flex-direction: row; 
-    flex-wrap: nowrap; 
-    justify-content: flex-start; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    width: 100%;
 } 
  
  
