@@ -18,7 +18,7 @@ const CardPost = (props) => {
   const isSmall = useSelector(state => state.posts.isSmallCards)
   const dispatch = useDispatch()
 
-  const [bgColor, setBgColor] = useState(false)
+  const [bgColor, setChangeColor] = useState(false)
 
   const changeColor = () => {
     setChangeColor(!bgColor)
@@ -32,7 +32,6 @@ const CardPost = (props) => {
       'cardBig': isSmall === false,
       'main-wrapper': true,
       'card-color': bgColor === true
-
     })}>
 
   

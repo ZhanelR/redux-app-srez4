@@ -44,7 +44,7 @@ export const usersSlice = createSlice({
       },
   
       openEditPopup: (state, action) => {
-        state.currentUser = state.items.find(item => item.name === action.payload)
+        state.currentUser = state.items.find(item => item.id === action.payload)
         state.isShowEditPopup = true
       },
   
@@ -79,13 +79,15 @@ export const usersSlice = createSlice({
       },
   
       updateItem: (state, action) => {
-        state.currentUser = state.showItems.find(item => item.name === action.payload.id)
-        state.currentUser.title = action.payload.title
-        state.currentUser.body = action.payload.body
+        console.log(action.payload)
+        state.currentUser = state.showItems.find(item => item.id === action.payload.id)
+       
+        state.currentUser.title = action.payload.username
+        state.currentUser.body = action.payload.email
       },
   
       removeItem: (state) => {
-        state.showItems = state.showItems.filter(item => item.name !== state.currentUser.id)
+        state.showItems = state.showItems.filter(item => item.id !== state.currentUser.id)
         state.isShowRemovePopup = false
       },
   

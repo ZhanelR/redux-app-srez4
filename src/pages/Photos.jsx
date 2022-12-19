@@ -2,9 +2,13 @@ import React  from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import CardPhotos from "../components/cards/CardPhotos";
-import { fetchPhotos, showFirstPosts, addThreeShowItems } from "../slices/photosSlice"
+import { fetchPhotos, showFirstPosts, addThreeShowItems, changeSizeCard, openAddPopup } from "../slices/photosSlice"
 import "./Template.scss"
 import { Button, Space } from 'antd'
+import  ModalAddPhoto from "../components/ModalAddPhoto"
+import ModalViewPhotos from "../components/ModalViewPhotos";
+import ModalRemovePhoto from "../components/ModalRemovePhoto"
+ 
 
 const Photos = () => {
     const photos = useSelector(state => state.photos.showItems) 
@@ -27,20 +31,25 @@ const Photos = () => {
       }, [])
 
       return (
-        <div className="container">
+        <div className="content-wrapper">
          <p className="page_title">Photos List</p>
          <div className="button-area">
-           <Button className="button-make-big-cards">Make big cards</Button>
-           <Button className="button-add-article">Add article</Button>
+           <Button className="button-make-big-cards" onClick={() => {
+            dispatch(changeSizeCard())
+           }}>Make big cards</Button>
+           <Button className="button-add-article" onClick={() => {
+            dispatch(openAddPopup())
+           }}>Add article</Button>
+           <ModalAddPhoto />
+           <ModalViewPhotos />
+           <ModalRemovePhoto />
          </div>
-   
-         <div className="cards-wrapper">
            <div className="cards">
              {
                photos.map(photo => <CardPhotos {...photo} key={photo.id} />)
              }
            </div>
-         </div>
+         
    
           <Button type="primary" className="button_ShowMore" onClick={() => {
            dispatch (addThreeShowItems()) 

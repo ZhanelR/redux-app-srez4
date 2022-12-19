@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Modal } from 'antd';
-import { removeItem, closeRemovePopup } from "../slices/postsSlice"
+import { removeItem, closeRemovePopup } from "../slices/photosSlice"
 
-const ModalRemovePost = () => {
-    const isShowRemovePopup = useSelector(state => state.posts.isShowRemovePopup) 
+const ModalRemovePhoto = () => {
+    const isShowRemovePopup = useSelector(state => state.photos.isShowRemovePopup) 
     const dispatch = useDispatch()
 
     const handleOk = () => {
@@ -22,4 +22,4 @@ const ModalRemovePost = () => {
     )     
 }
 
-export default ModalRemovePost
+export default ModalRemovePhoto

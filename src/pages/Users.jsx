@@ -1,12 +1,13 @@
 import React  from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
-import { fetchUsers, showFirstPosts, addThreeShowItems, openAddPopup } from "../slices/usersSlice";
+import { fetchUsers, showFirstPosts, addThreeShowItems, openAddPopup, changeSizeCard } from "../slices/usersSlice";
 import CardUsers from "../components/cards/CardUsers"
 import { Button } from 'antd'
 import ModalAddUser from "../components/ModalAddUser"
 import ModalViewUsers from "../components/ModalViewUsers"
-
+import ModalRemoveUser from "../components/ModalRemoveUser"
+import ModalEditUser from "../components/ModalEditUser"
 
 const Users = () => {
     const users = useSelector(state => state.users.showItems) 
@@ -28,30 +29,30 @@ const Users = () => {
       }, [])
 
       return (
-        <div className="container">
+        <div className="content-wrapper">
          <p className="page_title">Users List</p>
          <div className="button-area">
-           <Button className="button-make-big-cards">Make big cards</Button>
+           <Button className="button-make-big-cards" onClick={() => {
+        dispatch (changeSizeCard()) 
+      }}>Make big cards</Button>
            <Button className="button-add-article" onClick={() => {
         dispatch (openAddPopup()) 
       }}>Add user</Button>
            <ModalAddUser />
            <ModalViewUsers />
+           <ModalRemoveUser />
+
+           <ModalEditUser />
+        
          </div>
-   
-         <div className="cards-wrapper">
            <div className="cards">
              {
                 users.map(user => <CardUsers {...user} key={user.name} />)
              }
-           </div>
-         </div>
-   
+           </div>   
           <Button type="primary" className="button_ShowMore" onClick={() => {
            dispatch (addThreeShowItems()) 
          }}>Show More</Button>
-
-    
          </div> 
          )
          }

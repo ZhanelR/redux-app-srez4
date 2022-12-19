@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Modal } from 'antd';
-import { removeItem, closeRemovePopup } from "../slices/postsSlice"
+import { removeItem, closeRemovePopup } from "../slices/usersSlice"
 
-const ModalRemovePost = () => {
-    const isShowRemovePopup = useSelector(state => state.posts.isShowRemovePopup) 
+const ModalRemoveUser = () => {
+    const isShowRemovePopup = useSelector(state => state.users.isShowRemovePopup) 
     const dispatch = useDispatch()
 
     const handleOk = () => {
@@ -22,4 +22,4 @@ const ModalRemovePost = () => {
     )     
 }
 
-export default ModalRemovePost
+export default ModalRemoveUser

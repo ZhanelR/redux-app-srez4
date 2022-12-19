@@ -1,13 +1,20 @@
 @import "../../scss/mixins.scss";
-$card-margin: 20px;
+$card-margin: 30px;
 .main-wrapper { 
-    width: calc(33.3% - $card-margin); 
     height: 200px; 
     padding: 20px; 
-    margin: $card-margin; 
+    margin: $card-margin/2;
     background-color: rgba(116, 116, 116, 0.865); 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 } 
- 
+.cardBig{
+    width: calc(50% - $card-margin); 
+}
+ .cardSmall{
+    width: calc(33.3% - $card-margin); 
+ }
 .card__title { 
     @include card__title
 } 
@@ -24,7 +31,11 @@ $card-margin: 20px;
     grid-template-columns: repeat(auto-fit, minmax(70px, 150px)); 
     margin-left: 5px;
 } 
- 
+.card__buttons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 .card__buttons-view {
     margin-right: 2px;
     background-color: none;

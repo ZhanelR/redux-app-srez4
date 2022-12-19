@@ -6,30 +6,31 @@ import {openInfoPopup, openEditPopup, openRemovePopup} from "../../slices/photos
 import {useSelector, useDispatch} from "react-redux";
 import "./CardPost.scss"
 import { Button, Space } from 'antd'
-import ModalViewPhotos from "../ModalViewPhotos"
+//import ModalViewPhotos from "../ModalViewPhotos"
 
 
-const CardPhotos = ({id, title, url}) => {
+const CardPhotos = (props) => {
+  const {id, title, url} = props;
 // строка выше - открываю объект пропсов и достаю из него d, title, body
 //...id, title, body - это пропсы того, что придет с запроса на сервер  
 //...(получаю эти пропсы когда мапю в Articles я через спред {...post}, те то что есть в фото, через спрэд выкидываю в пропсы )
   const isSmall = useSelector(state => state.photos.isSmallCards)
   const dispatch = useDispatch()
 
-  const [bgColor, setBgColor] = useState(false)
+  const [bgColor, setChangeColor] = useState(false)
 
   const changeColor = () => {
-    setBgColor(!bgColor)
+    setChangeColor(!bgColor)
   }
 
   return (
     <div className={classNames({
       'cardSmall': isSmall === true,
       'cardBig': isSmall === false,
+      'main-wrapper': true,
       'card-color': bgColor === true
     })}>
 
-      <div className="main-wrapper">
         <div className="card__text">
           <p className="card__title">{title}</p>
           <p className="card__url">{url}</p>
@@ -59,9 +60,9 @@ const CardPhotos = ({id, title, url}) => {
           >
             Delete
           </Button>
-          <ModalViewPhotos id={id} title={title} url={url}/>
+          {/* <ModalViewPhotos id={id} title={title} url={url}/> */}
         </div>
-      </div>
+    
     </div>
 
   )

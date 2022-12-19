@@ -81,8 +81,9 @@ export const postsSlice = createSlice({
 
     updateItem: (state, action) => {
       state.currentPost = state.showItems.find(item => item.id === action.payload.id)
-      state.currentPost.title = action.payload.title
-      state.currentPost.body = action.payload.body
+      //строка выше: в текущих постах по айди нахожу нужный пост (currentPost)
+      state.currentPost.title = action.payload.title //замена одного поста другим 
+      state.currentPost.body = action.payload.body //замена одного поста другим 
     },
 
     removeItem: (state) => {

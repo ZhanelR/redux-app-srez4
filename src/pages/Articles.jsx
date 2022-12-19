@@ -7,12 +7,14 @@ import { useState, useEffect } from "react";
 import CardPost from "../components/cards/CardPost";
 //import addThreeShowItems from "../slices/postsSlice"
 //import { Button } from "bootstrap"
-import { fetchPosts, showFirstPosts, addThreeShowItems } from "../slices/postsSlice"
+import { fetchPosts, showFirstPosts, addThreeShowItems, changeSizeCard } from "../slices/postsSlice"
 import "./Template.scss"
 import { Button, Space } from 'antd'
 import { openAddPopup } from "../slices/postsSlice";
 import ModalAddPost from "../components/ModalAddPost";
 import ModavViewPost from "../components/ModavViewPosts"
+import ModalRemovePost from "../components/ModalRemovePost"
+import ModalEditPost from "../components/ModalEditPost"
 
 const Articles = () => {
     //const {text} = useSelector(state => state.posts) 
@@ -56,44 +58,38 @@ const Articles = () => {
       }, [])
 
       const buttonShow = () => {
-        if(items.length <= end) return (
-          <Button type="primary" disabled className="button_ShowMore" onClick={() => {
-            dispatch (addThreeShowItems()) 
-          }}
-          >Show More</Button>
-        ) 
-        return (
-          <Button type="primary" className="button_ShowMore" onClick={() => {
-            dispatch (addThreeShowItems()) 
-          }}
-          >Show More</Button>
-        )
+        const atribute = {}
+        if(items.length <= end) atribute.disabled = true
+        return <Button
+            type="primary" 
+            {...atribute}
+            className="button_ShowMore"
+            onClick={() => { dispatch (addThreeShowItems()) }}
+          >Show More
+          </Button>
       } 
     
 return (
      <div className="content-wrapper">
       <p className="page_title">Article List</p>
       <div className="button-area">
-        <Button className="button-make-big-cards">Make big cards</Button>
+        <Button className="button-make-big-cards"onClick={() => {
+        dispatch (changeSizeCard()) 
+      }}>Make big cards</Button>
         <Button className="button-add-article" onClick={() => {
         dispatch (openAddPopup()) 
       }}>Add article</Button>
         <ModalAddPost />
-        <ModavViewPost />  
+        <ModavViewPost />
+        <ModalRemovePost />  
+        <ModalEditPost />
       </div>
-      
-
-      
         <div className="cards">
           {
             status === "loading" ? <div>Spinner</div> : posts.map(post => <CardPost {...post} key={post.id} />)
           }
         </div>
-     
-
         {buttonShow()}
-        
-
     </div> 
 )
 }

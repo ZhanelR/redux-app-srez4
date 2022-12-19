@@ -5,12 +5,10 @@ import {openInfoPopup, openEditPopup, openRemovePopup} from "../../slices/usersS
 //строка выше {openInfoPopup, openEditPopup, openRemovePopup} это методы, позволяющ влиять на модалки 
 import {useSelector, useDispatch} from "react-redux";
 import "./CardPost.scss"
-import { Button, Space } from 'antd'
-import ModalView from "../ModavViewPosts"
-import ModalViewUsers from "../ModalViewUsers";
+import { Button } from 'antd'
 
 
-const CardUsers = ({name, email, phone}) => {
+const CardUsers = ({name, id, username, email, phone}) => {
 // строка выше - открываю объект пропсов и достаю из него d, title, body
 //...id, title, body - это пропсы того, что придет с запроса на сервер  
 //...(получаю эти пропсы когда мапю в Articles я через спред {...post}, те то что есть в фото, через спрэд выкидываю в пропсы )
@@ -27,12 +25,11 @@ const CardUsers = ({name, email, phone}) => {
     <div className={classNames({
       'cardSmall': isSmall === true,
       'cardBig': isSmall === false,
+      'main-wrapper': true,
       'card-color': bgColor === true
     })}>
-
-      <div className="main-wrapper">
         <div className="card__text">
-          <p className="card__name">{name}</p>
+          <p className="card__name">{username}</p>
           <p className="card__email">{email}</p>
           <p className="card__phone">{phone}</p>
         </div>
@@ -51,7 +48,7 @@ const CardUsers = ({name, email, phone}) => {
           </Button>
           <Button
             className="card__buttons-edit card__button"
-            onClick={() => dispatch(openEditPopup(name))}
+            onClick={() => dispatch(openEditPopup(id))}
           >
             Edit
           </Button>
@@ -64,8 +61,6 @@ const CardUsers = ({name, email, phone}) => {
           
         </div>
       </div>
-    </div>
-
   )
 }
 
